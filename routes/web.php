@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 
+use App\Http\Controllers\AdminController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +21,10 @@ Route::get('/', [HomeController::class, 'index']);
 
 
 Route::get('/home', [HomeController::class, 'redirect']);
+
+Route::get('/add_doctor_view', [AdminController::class, 'addview']);
+
+Route::post('/doctor_info', [AdminController::class, 'Doctor_Info']);
 
 Route::middleware([
     'auth:sanctum',
