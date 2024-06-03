@@ -22,9 +22,15 @@ Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/home', [HomeController::class, 'index']);
 
+Route::post('/appointment', [HomeController::class, 'appointment']);
+
 Route::get('/add_doctor_view', [AdminController::class, 'addview']);
 
 Route::post('/doctor_info', [AdminController::class, 'Doctor_Info']);
+
+Route::get('/myappointment', [HomeController::class, 'myappointment']);
+
+Route::get('/cancle_appointment/{id}', [HomeController::class, 'cancle_appointment']);
 
 Route::middleware([
     'auth:sanctum',
