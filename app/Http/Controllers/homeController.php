@@ -3,36 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Auth;
+use App\Models\Doctor;
 
-use App\Models\User;
-
-class homeController extends Controller
+class HomeController extends Controller
 {
+    public function index()
+    {
+        $doctor = Doctor::all();
+        return view('user.home', compact('doctor'));
+    }
+
     public function redirect()
     {
-        if(Auth::id())
-        {
-            if(Auth::user()->User_Type=='0')
-            {
+        if (Auth::id()) {
+            if (Auth::user()->User_Type == '0') {
                 return view('user.home');
-            }
-            else
-            {
+            } else {
                 return view('admin.home');
             }
-
-        }
-        else
-        {
+        } else {
             return redirect()->back();
         }
     }
-
-    public function index()
-    {
-        return view('user.home');
-    }
-
 }
