@@ -20,17 +20,29 @@ use App\Http\Controllers\AdminController;
 Route::get('/', [HomeController::class, 'index']);
 
 
-Route::get('/home', [HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'redirect']);
 
 Route::post('/appointment', [HomeController::class, 'appointment']);
+
+Route::get('/myappointment', [HomeController::class, 'myappointment']);
+
+Route::get('/cancle_appointment/{id}', [HomeController::class, 'cancle_appointment']);
+
 
 Route::get('/add_doctor_view', [AdminController::class, 'addview']);
 
 Route::post('/doctor_info', [AdminController::class, 'Doctor_Info']);
 
-Route::get('/myappointment', [HomeController::class, 'myappointment']);
+Route::get('/showappointment', [AdminController::class, 'showappointment']);
 
-Route::get('/cancle_appointment/{id}', [HomeController::class, 'cancle_appointment']);
+Route::get('/approve_appointment/{id}', [AdminController::class, 'approve_appointment']);
+
+Route::get('/cancle_appointment/{id}', [AdminController::class, 'cancle_appointment']);
+
+Route::get('/showdoctor', [AdminController::class, 'showdoctor']);
+
+Route::get('/delete_doctor/{id}', [AdminController::class, 'delete_doctor']);
+
 
 Route::middleware([
     'auth:sanctum',

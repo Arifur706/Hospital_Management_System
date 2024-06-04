@@ -34,14 +34,16 @@ class HomeController extends Controller
 
         $data->save();
 
-        return redirect()->back()->with('message','Appointment Request Successfull. We eill Call for Confirmation');
+        return redirect()->back()->with('message','Appointment Request Successfull. We will Call for Confirmation');
     }
 
     public function redirect()
     {
         if (Auth::id()) {
             if (Auth::user()->User_Type == '0') {
-                return view('user.home');
+                $doctor = Doctor::all();
+                return view('user.home', compact('doctor'));
+                
             } else {
                 return view('admin.home');
             }
