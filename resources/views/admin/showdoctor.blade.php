@@ -41,7 +41,7 @@
                     <a class="btn btn-danger" style="color: white; padding: 5px 10px; text-decoration: none;" onclick="return confirm('Are you sure to delete this?')" href="{{url('delete_doctor', $doctors->id)}}">Delete</a>
                 </td>
                 <td style="padding: 10px;">
-                    <a class="btn btn-primary" style="color: white; padding: 5px 10px; text-decoration: none;" onclick="return confirm('Are you sure to Update this?')" href="{{url('delete_doctor', $doctors->id)}}">Delete</a>
+                    <a class="btn btn-primary" style="color: white; padding: 5px 10px; text-decoration: none;" href="{{url('update_doctor', $doctors->id)}}">Update</a>
                 </td>
             </tr>
             @endforeach

@@ -73,4 +73,31 @@ public function delete_doctor($id)
     return redirect()->back()->with('messege','Doctor Delete from Database');
 }
 
+public function update_doctor($id)
+{
+    $data = doctor::find($id);
+    return view('admin.update_doctor', compact('data'));
+}
+
+public function edit_doctor(Request $request, $id)
+{
+    $data = doctor::find($id);
+
+        $image = $request->image;
+        if($image)
+        {
+        $imagename = time().'.'.$image->getClientoriginalExtension();
+        $request->image->move('doctor_image', $imagename);
+        $data->image = $imagename;
+        }
+
+        $data->name = $request->name;
+        $data->contact = $request->phone;
+        $data->department= $request->department;
+        $data->room = $request->room;
+        $data->save();
+        return redirect()->back()->with('messege', 'Doctor Information Updated');
+}
+
+
 }
