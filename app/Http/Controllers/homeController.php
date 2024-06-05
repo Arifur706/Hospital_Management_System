@@ -45,7 +45,8 @@ class HomeController extends Controller
                 return view('user.home', compact('doctor'));
                 
             } else {
-                return view('admin.home');
+                $totalDoctors = Doctor::count();
+                return view('admin.home', compact('totalDoctors'));
             }
         } else {
             return redirect()->back();

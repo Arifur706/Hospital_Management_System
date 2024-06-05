@@ -19,14 +19,15 @@ use App\Http\Controllers\AdminController;
 
 Route::get('/', [HomeController::class, 'index']);
 
-
-Route::get('/home', [HomeController::class, 'redirect']);
+Route::get('/home', [HomeController::class, 'redirect'])->middleware('auth', 'verified');
 
 Route::post('/appointment', [HomeController::class, 'appointment']);
 
 Route::get('/myappointment', [HomeController::class, 'myappointment']);
 
 Route::get('/cancle_appointment/{id}', [HomeController::class, 'cancle_appointment']);
+
+
 
 
 Route::get('/add_doctor_view', [AdminController::class, 'addview']);
